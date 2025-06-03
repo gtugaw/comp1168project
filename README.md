@@ -1,3 +1,6 @@
+Here's a structured Markdown version of the **Comp1168-Project(ABC Walk-in Clinic)** document. You can save it as a `.md` file for easy readability and formatting in Markdown-supported editors.
+
+```markdown
 # Comp1168-Database Management-Group Project
 
 **Group Size:** Maximum Six (6) students (may belong to different Lab groups/CRNs)  
@@ -10,161 +13,163 @@
 ## Project Synopsis
 
 ABC Walk-in Clinic is located in a large metropolitan city in Canada. The clinic staff consists of:
-- Ten doctors
-- Six nurses
-- Five office secretaries
-- Two administrative assistants
-- One manager
+- **Ten doctors**
+- **Six nurses**
+- **Five office secretaries**
+- **Two administrative assistants**
+- **One manager**
 
-First-time patients must visit the clinic in person and fill out a registration form containing their personal and health-related information. An office secretary then enters that information into the computer-based information system.
+First-time patients must visit the clinic in person and fill out a registration form containing personal and health-related information. An office secretary enters this information into the computer-based system.
 
-Patients may either become **permanent** (enrolled) patients for one of the doctors by filling out the necessary forms or continue as **walk-in** patients. Enrolled patients can book appointments online or by phone. A secretary then schedules an appointment with the appropriate doctor on a particular day and time. Any appointment that is canceled less than 24 hours in advance incurs a fifty-dollar fine.
+### Patient Types:
+- **Permanent Patients (Enrolled)**: Patients can register with a specific doctor and book appointments online or via phone.
+- **Walk-in Patients**: These patients do not have a dedicated doctor and visit as needed.
 
-During a visit, a patient reports to the secretary who either places them in the walk-in queue or, if an appointment exists, checks them in. A nurse then escorts the patient to an examination room, records their symptoms and medical issues, and, if needed, takes vital measurements (blood pressure, temperature, height, and weight) before entering all collected information into the system.
+### Appointment Process:
+1. **Booking**: Secretaries schedule appointments for enrolled patients.
+2. **Cancellation Policy**: Appointments canceled less than **24 hours in advance** incur a **$50 fine**.
+3. **Check-in Process**:
+   - Walk-in patients enter a queue.
+   - Enrolled patients check in for their scheduled appointments.
+4. **Examination Steps**:
+   - A nurse takes the patient to an exam room.
+   - Records symptoms and vital signs (blood pressure, temperature, height, weight).
+   - Inputs all collected data into the system.
 
-The clinic system should track appointment statuses (booked, canceled, arrived, checked in, checked out, LWT—left without treatment, No show, etc.). While healthcare is free in Canada (with the clinic reimbursed by the government), a small fee may be charged for services not covered (for example, for Sick notes or for visitors not under government health coverage).
-
-Once the nurse completes the initial assessment, the doctor examines the patient, may order diagnostic tests (blood work, X-ray, ultrasound, etc.), and records the patient’s symptoms, diagnosis, and treatment (including prescriptions). The system is required to store all this information. Additionally, if a referral is made to a specialist, that information must also be documented.
-
-After diagnostic results are received from the laboratory, a nurse reviews the reports and uploads them to the patient’s electronic file. In some cases, the nurse may also call the patient to arrange a follow-up appointment if necessary.
+### Clinic System Features:
+- Tracks appointment statuses: **Booked, Canceled, Arrived, Checked-in, Checked-out, LWT (Left Without Treatment), No Show**.
+- Manages **billing** for non-covered services (e.g., sick notes, visitor fees).
+- Doctors enter **diagnoses, treatments, prescriptions**, and can refer patients to specialists.
+- Nurses **review diagnostic results**, update records, and schedule follow-ups.
 
 ---
 
 ## Clinic Operations and Scheduling
 
-The clinic operates in two six-hour shifts:
-- **Shift 1:** 7 a.m. to 2 p.m.
-- **Shift 2:** 2 p.m. to 8 p.m.
+### Shifts:
+- **Shift 1:** 7 a.m. – 2 p.m.
+- **Shift 2:** 2 p.m. – 8 p.m.
 
-The Manager is responsible for scheduling doctors, nurses, and secretaries. While doctors are paid by the government, the Manager must handle the salary payments for all other employees based on their hours worked. The system should store the hours and enable the Manager to generate a bi-weekly report for calculating salaries (assuming reasonable hourly rates for nurses and secretaries).
+### Staff Payments:
+- **Doctors** are paid by the government.
+- **Other employees (nurses, secretaries, assistants)** receive salaries based on **worked hours**.
+- The **Manager** oversees payroll and generates **bi-weekly salary reports**.
 
 ---
 
 ## Project Requirements
 
-Please make reasonable and educated assumptions about missing or ambiguous information and document your assumptions briefly.
+### Data Models:
+1. **Conceptual Model**  
+   - Create an entity-relationship diagram (**ERD**) using Draw.io.  
+   - Define **entities and relationships**, including **many-to-many (M:M) relationships**.
 
-1. **Conceptual Data Model:**  
-   Create a conceptual data model using Draw.io (or similar software), including all entities and their relationships (incorporate any many-to-many (M:M) relationships).
+2. **Physical Data Model (Logical Model)**  
+   - Build an **EER model** in **MySQL Workbench** using the schema `GroupxxSchema` (replace “xx” with your group number).  
+   - Ensure **Third Normal Form (3NF)** compliance.  
+   - Define **columns, keys, constraints, and relationships (resolved to 1:M)**.
 
-2. **Physical (Logical) Data Model:**  
-   Develop a physical (logical) data model using MySQL Workbench® based on your conceptual model.  
-   - Create a new schema named `GroupxxSchema` (replace "xx" with your group number, e.g., `Group21Schema`).
-   - Design a physical EER model that includes tables, appropriate columns, and one-to-many (1:M) relationships.
-   - Assign proper data types and add appropriate keys and constraints.
-   - Ensure all relationships are in Third Normal Form (3NF).
-
-3. **Forward Engineering:**  
-   Forward engineer your EER model to create the database tables and relationships. Insert 10–15 records per table.
-
-4. **SQL Queries:**  
-   Create the following ten (10) queries. For each query, copy the text (as provided below) along with its serial number as a comment before your SQL code:
-
-   1. **Query 1:**  
-      Create a query that returns patients' full names, addresses, phone numbers, and email addresses. (Minimum ten results required.)
-
-   2. **Query 2:**  
-      Create a query that lists the full names of all patients and their last appointment dates who have not had any appointment in the clinic in the last 2 years. (At least one patient required.)
-
-   3. **Query 3:**  
-      Create a query that returns all appointments for a specific patient in 2023. (At least five appointments needed; include patient names, examining doctors' and nurses' names, appointment dates/times, and tests ordered by the doctor.)
-
-   4. **Query 4:**  
-      Create a query that returns all appointments that were either canceled or where patients were marked as No Show in December 2023. (Minimum five results required.)
-
-   5. **Query 5:**  
-      Create a query that returns the names of staff members (excluding doctors), their hourly rates, number of hours worked, and salary (calculated column; assume there are 13 employees) for a two-week period.
-
-   6. **Query 6:**  
-      The Clinic Manager wants to send "Happy holidays" greeting cards in December and print mailing labels showing two columns—the concatenated full names and complete addresses (combining street address, city, province, and Postal Code). Create a query to retrieve this information.
-
-   7. **Query 7:**  
-      Create a query that returns all patients and their doctor's names for patients who have permanently enrolled with any doctor at the clinic.
-
-   8. **Query 8:**  
-      Create a query that returns a list of all patients along with their family members. Modify the patient table to include:
-      - A column (`primary_member_id`) designating a primary member.
-      - A column (`relationship`) to indicate the relationship (e.g., husband, wife, son, daughter).
-
-   9. **Query 9:**  
-      Create a query that generates a list of all patients seen by a particular doctor on a given date (for example, December 12, 2022).
-
-   10. **Query 10:**  
-       Create a query that returns the name of a patient who paid a fee to the clinic, along with the service for which the fee was paid and the doctor's name (e.g., "Dr. Smith, Sick Note").
+3. **Forward Engineering**  
+   - Convert EER model into **physical tables** using MySQL Workbench.  
+   - Insert **10–15 sample records per table**.
 
 ---
 
-## Project Submission Requirements
+## Required SQL Queries
 
-Each group must submit three (3) separate files via BrightSpace before the deadline:
+Each query must be **commented** with its description.
 
-1. **File No. 1 – Project Report (PDF):**  
-   - **Cover Page:** All members' last names, first names, student IDs, and CRN.
-   - **Page 2:** The Conceptual Data Model (created via Draw.io or similar, then inserted as an image).
-   - **Page 3:** The Logical/Physical ER Model (created in MySQL Workbench or similar, then inserted as an image). *(See Appendix A for instructions.)*
-   - **Page 4:** Any assumptions or clarifications.
+```sql
+-- Query 1: Retrieve Patients' full names, addresses, phone numbers, and emails.
+```
 
-2. **File No. 2 – SQL Script File for Schema:**  
-   A script that creates the `GroupxxSchema` with the required tables and data. *(See Appendix B for instructions.)*
+```sql
+-- Query 2: List patients who have not had an appointment in the last 2 years.
+```
 
-3. **File No. 3 – SQL Script File for Queries:**  
-   A script containing the SQL code for the ten queries detailed above.
+```sql
+-- Query 3: Retrieve all appointments for a specific patient in 2023.
+```
 
-**Note:** Ten percent (10%) of marks are reserved for proper submission, organization, and formatting of your report as per the provided specifications.
+```sql
+-- Query 4: Retrieve all canceled or No Show appointments from December 2023.
+```
+
+```sql
+-- Query 5: Retrieve staff members (excluding doctors) with hours worked, hourly rates, and calculated salaries.
+```
+
+```sql
+-- Query 6: Generate mailing labels for holiday greeting cards (full name + address).
+```
+
+```sql
+-- Query 7: List enrolled patients along with their assigned doctors.
+```
+
+```sql
+-- Query 8: Create a family member structure (add primary_member_id and relationship columns).
+```
+
+```sql
+-- Query 9: Retrieve all patients seen by a specific doctor on a given date.
+```
+
+```sql
+-- Query 10: Retrieve the name of a patient who paid a fee along with service details and doctor's name.
+```
 
 ---
 
-Department
+## Submission Guidelines
 
-idDepartment INT DeptName VARCHAR(45) Indexes
+Each group must submit **three (3) separate files** via BrightSpace:
 
-Employee
+1. **Project Report (PDF)**
+   - **Cover Page:** Student names, IDs, CRN.
+   - **Page 2:** Conceptual Data Model (Insert ERD image).
+   - **Page 3:** Logical/Physical EER Model (Insert Workbench image).
+   - **Page 4:** Assumptions & Clarifications.
 
-idEmployee INT EmpName VARCHAR(45) fk_Employee_Department (Department_idDepartment INT) Indexes
+2. **SQL Script for Schema Creation**
+   - Script defining the **GroupxxSchema**, tables, relationships, and sample data.
 
-## Appendix A: How to Export Models from MySQL Workbench as an Image
+3. **SQL Script for Queries**
+   - Script containing all **ten SQL queries**.
 
-1. Open MySQL Workbench.
-2. Navigate to `File` > `Export` > `Export as PNG...`
-3. Ensure the following selections:
-   - Local instance (e.g., MySQL57)
-   - MySQL Model with the EER Diagram active
-4. Useful keyboard shortcuts:
+*Note:* **10% of marks** are reserved for **proper formatting, submission, and organization**.
+
+---
+
+## Appendix A: Exporting Models as Images in MySQL Workbench
+
+1. **Go to**: `File` > `Export` > `Export as PNG`
+2. **Ensure selections**:
+   - MySQL Model with **EER Diagram active**.
+   - Choose the appropriate **database instance**.
+3. **Keyboard Shortcuts**:
    - **New Model:** `Ctrl+N`
-   - **Open Model:** `Ctrl+0`
-   - **Save Model:** `Ctrl+S` (or `Ctrl+Shift+S` for "Save Model As...")
-   - **Export Forward Engineer SQL CREATE Script:** `Ctrl+Shift+G`
-5. Once the PNG is created, insert it into your Word document.  
-   **Sample Diagram:**
-
-
-
+   - **Open Model:** `Ctrl+O`
+   - **Save Model:** `Ctrl+S`
+   - **Export as SQL:** `Ctrl+Shift+G`
+   - **Export as PNG:** `Ctrl+Shift+P`
 
 ---
 
-## Appendix B: How to Script a Schema (Table Structure and Data)
+## Appendix B: Exporting Schema and Data
 
-1. **Access the Main Server Instance Page:**  
-Click on `Administration` > `Management` > `Data Export`.
-
-2. **Schema Export Options:**  
-- Choose the schema to export.
-- Check these options:
-  - Dump Structure and Data.
-  - Specify a script file name (e.g., `GroupxxSchema`) and select your desired path.
-  - Create Dump in a Single Transaction.
-  - Include Create Schema.
-
-3. **Export Methods:**  
-- **Option 1:** Export to Dump Project Folder  
-  (Each table is exported into a separate file, allowing selective restoration, though this may be slower.)
-- **Option 2:** Export to a Self-Contained File  
-  (All objects are exported into one single file.)
-
-4. **Finalize the Export:**  
-- Ensure "Create Dump in a Single Transaction" is selected (for a self-contained file).
-- Verify that "Include Create Schema" is checked.
+1. **Go to**: `Administration` > `Management` > `Data Export`
+2. **Select schema** and enable:
+   - **Dump Structure and Data**
+   - **Include Create Schema**
+   - **Create Dump in a Single Transaction**
+3. **Export Formats**:
+   - **Dump Project Folder** (individual table files)
+   - **Self-contained File** (entire schema and data in one file)
 
 ---
 
-*End of Document*
+### End of Document
+```
+
+You can copy and paste this into any Markdown-compatible editor! Let me know if you need any tweaks. 🚀
